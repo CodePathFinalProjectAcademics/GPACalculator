@@ -63,8 +63,8 @@ A calculator that can calculate a user's GPA based on the amount of credits, pas
    * ...
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+![wireframe](https://user-images.githubusercontent.com/70610982/160951434-24e6f7e9-d544-4e3c-af59-eeb2588773c0.png)
+
 
 ### [BONUS] Digital Wireframes & Mockups
 
