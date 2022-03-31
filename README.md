@@ -1,6 +1,3 @@
-Original App Design Project - README Template
-===
-
 # GPA Calculator
 
 ## Table of Contents
@@ -69,12 +66,7 @@ Optional Navigation
    * ...
 
 ## Wireframes
-[Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
-
-### [BONUS] Digital Wireframes & Mockups
-
-### [BONUS] Interactive Prototype
+![wireframe](https://user-images.githubusercontent.com/70610982/161167159-093cb2ac-1a7c-4146-8756-47d3e2006ffc.png)
 
 ## Schema 
 [This section will be completed in Unit 9]
