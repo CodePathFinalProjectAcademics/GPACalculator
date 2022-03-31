@@ -11,7 +11,6 @@
 A calculator that can calculate a user's GPA based on the amount of credits, past classes' grades, and total credits required
 
 ### App Evaluation
-[Evaluation of your app across the following attributes]
 - **Category:** Education and Productivity
 - **Mobile**: Mobile first experience
 - **Story:** Can calculate the user's GPA based on the classes that they've taken so far at a college or 
