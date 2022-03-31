@@ -28,7 +28,10 @@ A calculator that can calculate a user's GPA based on the amount of credits, pas
 
 **Required Must-have Stories**
 
-* User can calculate their overall GPA for college & high school.   
+* User can calculate their overall GPA for college & high school.
+* User can calculate/predict thier grade for a specific grade.
+* Bottom View Navigation that can switch between the two options above
+* When user exits out of app and reopens it, previously submitted info will still be there
 
 **Optional Nice-to-have Stories**
 
@@ -38,20 +41,22 @@ A calculator that can calculate a user's GPA based on the amount of credits, pas
 
 ### 2. Screen Archetypes
 
-* [list first screen here]
-   * [list associated required story here]
-   * ...
-* [list second screen here]
-   * [list associated required story here]
-   * ...
+* GPA Calculator Screen
+  * Includes the ability to input Couse Name (User's Input is Optional), Credits for the Course (User's Input is Required), Grade Obtained/Desired for the Class (User's Input is Requried)
+  * Ability for User to add more courses with an add button
+* Course/Class Grade Calculator Screen
+  * Includes the ability to input Course Name (User's Input is Optional), Assignment Name (ex HomeWork, Midterm, Quiz 1, Final, etc.)(User's Input is Optional), Assignment Worth (User's Input is Required), Grade for Assignment (User can put Letter Grade or Percentage Grade ie B or 88)(User's Input is Required)
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
-* [fill out your first tab]
-* [fill out your second tab]
-* [fill out your third tab]
+* GPA
+* Course/Class Grade
+
+Optional Navigation
+
+* Desired GPA  Calculator
 
 **Flow Navigation** (Screen to Screen)
 
