@@ -46,6 +46,7 @@ A calculator that can calculate a user's GPA based on the amount of credits, pas
   * Ability for User to add more courses with an add button
 * Course/Class Grade Calculator Screen
   * Includes the ability to input Course Name (User's Input is Optional), Assignment Name (ex HomeWork, Midterm, Quiz 1, Final, etc.)(User's Input is Optional), Assignment Worth (User's Input is Required), Grade for Assignment (User can put Letter Grade or Percentage Grade ie B or 88)(User's Input is Required)
+  * Ability for User to add more assignments with an add button
 
 ### 3. Navigation
 
