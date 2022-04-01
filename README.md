@@ -55,7 +55,7 @@ Optional Navigation
 
 * Desired GPA  Calculator
 
-**Flow Navigation** (Screen to Screen)
+
 
 * GPA Screen
    
