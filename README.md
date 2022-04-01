@@ -46,7 +46,7 @@ A calculator that can calculate a user's GPA based on the amount of credits, pas
 
 ### 3. Navigation
 
-**Tab Navigation** (Tab to Screen)
+**Bottom Navigation** (Tab to Screen)
 
 * GPA
 * Course/Class Grade
@@ -57,12 +57,10 @@ Optional Navigation
 
 **Flow Navigation** (Screen to Screen)
 
-* [list first screen here]
-   * [list screen navigation here]
-   * ...
-* [list second screen here]
-   * [list screen navigation here]
-   * ...
+* GPA Screen
+   
+* Grade Calculator Screen
+  
 
 ## Wireframes
 ![wireframe](https://user-images.githubusercontent.com/70610982/161167159-093cb2ac-1a7c-4146-8756-47d3e2006ffc.png)
