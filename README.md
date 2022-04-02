@@ -69,10 +69,11 @@ Optional Navigation
 ### Models
 | Property | Type | Description |
 |---|---|---|
-|className|string| The name of the course that the user is taking|
+|className|string| The name of the course that the user is currently taking|
 |gradingProcedure|string|The grade breakdown in a single class|
-|grade| string |The predicted grade that the user is going to get|
-|credit|int|The number of credits of each course |
+|letterGrade| string |The predicted grade that the user is going to get by the end of the semester (A - F)|
+|grade| string |The predicted grade that the user is going to get by the end of the semester (0 - 100)|
+|credit|int|The number of credits in a course|
 |weight| string |The importance of a certain class|
 |currentGPA |float| The current GPA of the student|
 |percentage| int |The percentage of each grading procedure|
