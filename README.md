@@ -66,9 +66,18 @@ Optional Navigation
 ![wireframe](https://user-images.githubusercontent.com/70610982/161167159-093cb2ac-1a7c-4146-8756-47d3e2006ffc.png)
 
 ## Schema 
-[This section will be completed in Unit 9]
 ### Models
-[Add table of models]
+| Property | Type | Description |
+|---|---|---|
+|className|string| The name of the course that the user is taking|
+|gradingProcedure|string|The grade breakdown in a single class|
+|grade| string |The predicted grade that the user is going to get|
+|credit|int|The number of credits of each course |
+|weight| string |The importance of a certain class|
+|currentGPA |float| The current GPA of the student|
+|percentage| int |The percentage of each grading procedure|
+|desiredGPA| float | The desired GPA of the student want to achieve|
+
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]
