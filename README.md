@@ -81,6 +81,39 @@ Optional Navigation
 |desiredGPA| float | The desired GPA of the student want to achieve|
 
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+* Login Screen
+  - (READ)
+    - Read the username and password entered by the user
+     ```java
+        ParseUser.logInInBackground(username, password, new LogInCallback() {
+        @Override
+        public void done(ParseUser user, ParseException e) {
+            if(e != null) {
+                System.out.println("Issue with login");
+                return;
+            }
+
+            goToMainActivity();
+
+            Toast.makeText(LoginActivity.this, "Success", Toast.LENGTH_SHORT).show();
+        }
+    });
+    ```
+  - (CREATE)
+    - Create a new user in the database
+      ```java
+        ParseUser user = new ParseUser();
+        user.setUsername(username);
+        user.setPassword(password);
+
+        user.signUpInBackground(new SignUpCallback() {
+            public void done(ParseException e) {
+                if (e == null) {
+                    logIn(username, password);
+
+                } else {
+                    System.out.println("Cannot sign up");
+                }
+            }
+        });
+      ```
