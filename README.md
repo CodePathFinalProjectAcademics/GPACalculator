@@ -63,7 +63,8 @@ Optional Navigation
   
 
 ## Wireframes
-![wireframe](https://user-images.githubusercontent.com/70610982/161167159-093cb2ac-1a7c-4146-8756-47d3e2006ffc.png)
+![161167159-093cb2ac-1a7c-4146-8756-47d3e2006ffc](https://user-images.githubusercontent.com/70610982/162114611-f9fa2a82-606f-4e82-a9d3-c3a6e9198422.png)
+
 
 ## Schema 
 ### Models
