@@ -117,3 +117,10 @@ Optional Navigation
             }
         });
       ```
+* GPA Calculator Screen
+  - (Create/POST) Create a new class object 
+  - (Delete) Deletes a class object
+* Class Average Screen
+  - (Create/POST) Add a section object 
+* Prediction Screen
+  - (Create/POST) Add a class object
