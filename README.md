@@ -28,6 +28,9 @@ A calculator that can calculate a user's GPA based on the amount of credits, pas
 * User can calculate/predict thier grade for a specific grade.
 * Bottom View Navigation that can switch between the two options above
 * When user exits out of app and reopens it, previously submitted info will still be there
+* User can create an account
+* User can login into their account from the login screen
+* A guest option that allow the user to bypass the login system
 
 **Optional Nice-to-have Stories**
 
