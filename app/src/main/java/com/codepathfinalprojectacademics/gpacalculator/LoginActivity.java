@@ -7,6 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.parse.LogInCallback;
+import com.parse.ParseException;
+import com.parse.ParseUser;
+import com.parse.SignUpCallback;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -22,6 +28,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        if(ParseUser.getCurrentUser() != null) goToMainActivity();
+
         guestModeButton = findViewById(R.id.guestModeBtn);
         logInButton = findViewById(R.id.logInBtn);
         signUpButton = findViewById(R.id.signUpBtn);
@@ -35,6 +43,25 @@ public class LoginActivity extends AppCompatActivity {
                 goToMainActivity();
             }
         });
+
+        logInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String username = usernameInputText.getText().toString();
+                String password = passwordInputText.getText().toString();
+                userLogIn(username, password);
+            }
+        });
+
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String username = usernameInputText.getText().toString();
+                String password = passwordInputText.getText().toString();
+
+                userSignUp(username, password);
+            }
+        });
     }
 
     public void goToMainActivity() {
@@ -42,4 +69,39 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+    /**
+     * Log the user in to the app
+     */
+    private void userLogIn(String username, String password) {
+        ParseUser.logInInBackground(username, password, new LogInCallback() {
+            @Override
+            public void done(ParseUser user, ParseException e) {
+                if(e != null) {
+                    return;
+                }
+
+                goToMainActivity();
+                Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void userSignUp(String username, String password) {
+        ParseUser user = new ParseUser();
+        user.setUsername(username);
+        user.setPassword(password);
+
+        user.signUpInBackground(new SignUpCallback() {
+            public void done(ParseException e) {
+                if (e == null) {
+                    userLogIn(username, password);
+
+                } else {
+                    Toast.makeText(LoginActivity.this, "Cannot Sign Up", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
 }
