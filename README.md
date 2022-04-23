@@ -30,13 +30,16 @@ A calculator that can calculate a user's GPA based on the amount of credits, pas
 * When user exits out of app and reopens it, previously submitted info will still be there
 * User can create an account
 * User can login into their account from the login screen
-* A guest option that allow the user to bypass the login system
+* [X] A guest option that allow the user to bypass the login system
 
 **Optional Nice-to-have Stories**
 
 * Inform user of what grades and credit they need to get to obtain a desired GPA
 * For the GPA Activty have it be more broken down into Semesters
 * Have a GPA scale based on the college/high school they go to
+
+### GIF Progress [WEEK 3]
+![rxamPXO8NL](https://user-images.githubusercontent.com/70610982/164836283-864cfaee-aed1-4be7-927d-7580a8749dfe.gif)
 
 ### 2. Screen Archetypes
 
