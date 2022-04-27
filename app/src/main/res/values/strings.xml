@@ -3,4 +3,9 @@
     <string name="guest_mode">Guest Mode</string>
     <string name="log_in">Log In</string>
     <string name="sign_up">Sign Up</string>
+
+    <!-- Fragment Strings -->
+    <string name="home_fragment">Home fragment</string>
+    <string name="classgpa_blank_fragment">Class GPA fragment</string>
+    <string name="profile_blank_fragment">Profile fragment</string>
 </resources>
