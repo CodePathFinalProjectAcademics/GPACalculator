@@ -37,30 +37,19 @@ public class LoginActivity extends AppCompatActivity {
         usernameInputText = findViewById(R.id.inputUsername);
         passwordInputText = findViewById(R.id.inputPassword);
 
-        guestModeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goToMainActivity();
-            }
+        guestModeButton.setOnClickListener(v -> goToMainActivity());
+
+        logInButton.setOnClickListener(v -> {
+            String username = usernameInputText.getText().toString();
+            String password = passwordInputText.getText().toString();
+            userLogIn(username, password);
         });
 
-        logInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String username = usernameInputText.getText().toString();
-                String password = passwordInputText.getText().toString();
-                userLogIn(username, password);
-            }
-        });
+        signUpButton.setOnClickListener(v -> {
+            String username = usernameInputText.getText().toString();
+            String password = passwordInputText.getText().toString();
 
-        signUpButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String username = usernameInputText.getText().toString();
-                String password = passwordInputText.getText().toString();
-
-                userSignUp(username, password);
-            }
+            userSignUp(username, password);
         });
     }
 
@@ -74,16 +63,13 @@ public class LoginActivity extends AppCompatActivity {
      * Log the user in to the app
      */
     private void userLogIn(String username, String password) {
-        ParseUser.logInInBackground(username, password, new LogInCallback() {
-            @Override
-            public void done(ParseUser user, ParseException e) {
-                if(e != null) {
-                    return;
-                }
-
-                goToMainActivity();
-                Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+        ParseUser.logInInBackground(username, password, (user, e) -> {
+            if(e != null) {
+                return;
             }
+
+            goToMainActivity();
+            Toast.makeText(LoginActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
         });
     }
 
@@ -92,14 +78,12 @@ public class LoginActivity extends AppCompatActivity {
         user.setUsername(username);
         user.setPassword(password);
 
-        user.signUpInBackground(new SignUpCallback() {
-            public void done(ParseException e) {
-                if (e == null) {
-                    userLogIn(username, password);
+        user.signUpInBackground(e -> {
+            if (e == null) {
+                userLogIn(username, password);
 
-                } else {
-                    Toast.makeText(LoginActivity.this, "Cannot Sign Up", Toast.LENGTH_SHORT).show();
-                }
+            } else {
+                Toast.makeText(LoginActivity.this, "Cannot Sign Up", Toast.LENGTH_SHORT).show();
             }
         });
     }
