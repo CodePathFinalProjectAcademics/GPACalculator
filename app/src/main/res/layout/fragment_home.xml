@@ -6,13 +6,9 @@
     android:background="@color/teal_200"
     tools:context=".fragments.Home">
 
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvHome"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/home_fragment"
-        android:textSize="26sp" />
-
+        android:padding="8dp" />
 </FrameLayout>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/class_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvsection"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="Class Name" />
+
+        <TextView
+            android:id="@+id/tvscore"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="Grade" />
+
+        <TextView
+            android:id="@+id/tvcredit"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="Credit " />
+
+        <TextView
+            android:id="@+id/tvworth"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="Weight" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btngpa_add"
+        android:layout_width="204dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/class_layout"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="82dp"
+        android:layout_marginEnd="84dp"
+        android:layout_weight="1"
+        android:text="Add Class" />
+
+    <ImageView
+        android:id="@+id/imvgpa"
+        android:layout_width="139dp"
+        android:layout_height="119dp"
+        android:layout_alignTop="@id/btngpa_add"
+        android:layout_alignBottom="@id/btngpa_add"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="513dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="-585dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/circle" />
+
+    <TextView
+        android:id="@+id/tvgpa_result"
+        android:layout_width="wrap_content"
+        android:layout_height="67dp"
+        android:layout_alignTop="@id/btngpa_add"
+        android:layout_alignBottom="@id/btngpa_add"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="554dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="-573dp"
+        android:layout_weight="1"
+        android:text="GPA: 3.5"
+        android:textColor="#040303"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvgpa_question"
+        android:layout_width="169dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/btngpa_add"
+        android:layout_marginEnd="79dp"
+        android:layout_marginBottom="-522dp"
+        android:text="What is your GPA?"
+        android:textColor="#040303"
+        android:textSize="20sp" />
+
+</RelativeLayout>
