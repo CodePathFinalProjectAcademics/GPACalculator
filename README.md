@@ -37,9 +37,9 @@ A calculator that can calculate a user's GPA based on the amount of credits, pas
 * Inform user of what grades and credit they need to get to obtain a desired GPA
 * For the GPA Activty have it be more broken down into Semesters
 * Have a GPA scale based on the college/high school they go to
-
+###
 ### GIF Progress [WEEK 3]
-![rxamPXO8NL](https://user-images.githubusercontent.com/70610982/164836283-864cfaee-aed1-4be7-927d-7580a8749dfe.gif)
+![rxamPXO8NL](https://github.com/CodePathFinalProjectAcademics/GPACalculator/blob/main/GPAcalc%20demo.gif)
 
 ### 2. Screen Archetypes
 
