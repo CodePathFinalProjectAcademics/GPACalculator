@@ -65,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
     private void userLogIn(String username, String password) {
         ParseUser.logInInBackground(username, password, (user, e) -> {
             if(e != null) {
+                Toast.makeText(LoginActivity.this, "Login Unsuccessful", Toast.LENGTH_SHORT).show();
                 return;
             }
 
