@@ -9,4 +9,9 @@
     <string name="classgpa_blank_fragment">Class GPA fragment</string>
     <string name="profile_blank_fragment">Profile fragment</string>
     <string name="log_out">log out</string>
+    <string name="user_gpa">3.5</string>
+    <string name="user_s_gpa">GPA</string>
+    <string name="profile_log_out">Log out</string>
+    <string name="username">User\'s name</string>
+    <string name="user_profile_pic">TODO</string>
 </resources>
