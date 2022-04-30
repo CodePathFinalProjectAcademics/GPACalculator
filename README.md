@@ -38,8 +38,19 @@ A calculator that can calculate a user's GPA based on the amount of credits, pas
 * For the GPA Activty have it be more broken down into Semesters
 * Have a GPA scale based on the college/high school they go to
 ###
-### GIF Progress [WEEK 3]
+### GIF Progress [WEEK 4]
 ![rxamPXO8NL](https://github.com/CodePathFinalProjectAcademics/GPACalculator/blob/main/GPAcalc%20demo.gif)
+
+### Screen Progress [WEEK 4]
+* GPA Screen
+
+
+![gpa calc screen](https://user-images.githubusercontent.com/62909490/166082976-9832e2b5-fc6d-4fc1-beaa-065ae376f03f.png)
+
+* Grade Screen
+
+
+![class grade screen](https://user-images.githubusercontent.com/62909490/166082994-43967f6a-30a3-4bb1-8f2e-90ec71ce4406.png)
 
 ### 2. Screen Archetypes
 
