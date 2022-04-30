@@ -8,4 +8,5 @@
     <string name="home_fragment">Home fragment</string>
     <string name="classgpa_blank_fragment">Class GPA fragment</string>
     <string name="profile_blank_fragment">Profile fragment</string>
+    <string name="log_out">log out</string>
 </resources>

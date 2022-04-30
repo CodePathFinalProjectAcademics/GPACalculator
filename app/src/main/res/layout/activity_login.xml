@@ -42,7 +42,7 @@
         android:importantForAutofill="no" />
 
     <Button
-        android:id="@+id/logInBtn"
+        android:id="@+id/logoutBtn"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
