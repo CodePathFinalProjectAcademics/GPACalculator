@@ -20,8 +20,9 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="#040303"
-            android:text="Section Name" />
+            android:text="Section Name"
+            android:background="@drawable/ic_baseline_check_box_outline_blank_24"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tvworth"
@@ -29,7 +30,8 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="#040303"
+            android:textColor="@color/black"
+            android:background="@drawable/ic_baseline_check_box_outline_blank_24"
             android:text="Worth" />
 
         <TextView
@@ -37,9 +39,10 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_weight="1"
+            android:background="@drawable/ic_baseline_check_box_outline_blank_24"
             android:gravity="center"
-            android:textColor="#040303"
-            android:text="Grade" />
+            android:text="Grade"
+            android:textColor="@color/black" />
 
     </LinearLayout>
 
@@ -52,7 +55,10 @@
         android:layout_marginTop="87dp"
         android:layout_marginEnd="42dp"
         android:layout_weight="1"
-        android:text="Add Assignments" />
+        android:background="@color/green"
+        android:text="Add Assignment"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/imvgpa"
@@ -74,13 +80,14 @@
         android:layout_alignTop="@id/btngpa_add"
         android:layout_alignBottom="@id/btngpa_add"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="554dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="-573dp"
+        android:layout_marginTop="536dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="-555dp"
         android:layout_weight="1"
-        android:text="GPA: 3.5"
-        android:textColor="#040303"
-        android:textSize="24sp"
+        android:backgroundTint="@color/white"
+        android:text="87%"
+        android:textColor="@color/black"
+        android:textSize="48sp"
         android:textStyle="bold" />
 
 </RelativeLayout>

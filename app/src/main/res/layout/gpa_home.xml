@@ -20,6 +20,7 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:gravity="center"
+            android:background="@drawable/ic_baseline_check_box_outline_blank_24"
             android:textColor="@color/black"
             android:text="Class Name" />
 
@@ -29,6 +30,7 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:gravity="center"
+            android:background="@drawable/ic_baseline_check_box_outline_blank_24"
             android:textColor="@color/black"
             android:text="Grade" />
 
@@ -38,6 +40,7 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:gravity="center"
+            android:background="@drawable/ic_baseline_check_box_outline_blank_24"
             android:textColor="@color/black"
             android:text="Credit " />
 
@@ -47,6 +50,7 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:gravity="center"
+            android:background="@drawable/ic_baseline_check_box_outline_blank_24"
             android:textColor="@color/black"
             android:text="Weight" />
 
@@ -61,7 +65,10 @@
         android:layout_marginTop="82dp"
         android:layout_marginEnd="84dp"
         android:layout_weight="1"
-        android:text="Add Class" />
+        android:background="@color/green"
+        android:text="Add Class"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/imvgpa"
@@ -83,13 +90,14 @@
         android:layout_alignTop="@id/btngpa_add"
         android:layout_alignBottom="@id/btngpa_add"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="554dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="-573dp"
+        android:layout_marginTop="537dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="-556dp"
         android:layout_weight="1"
-        android:text="GPA: 3.5"
-        android:textColor="#040303"
-        android:textSize="24sp"
+        android:backgroundTint="@color/white"
+        android:text="3.5"
+        android:textColor="@color/black"
+        android:textSize="48sp"
         android:textStyle="bold" />
 
     <TextView
@@ -99,8 +107,9 @@
         android:layout_alignBottom="@id/btngpa_add"
         android:layout_marginEnd="79dp"
         android:layout_marginBottom="-522dp"
+        android:backgroundTint="@color/white"
         android:text="What is your GPA?"
-        android:textColor="#040303"
+        android:textColor="@color/black"
         android:textSize="20sp" />
 
 </RelativeLayout>
