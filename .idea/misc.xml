@@ -23,6 +23,9 @@
         <entry key="..\:/Users/Bryan Martinez/AndroidStudioProjects/GPACalculator/app/src/main/res/menu/botton_nav_menu.xml" value="0.22962962962962963" />
         <entry key="..\:/Users/Charl/AndroidStudioProjects/GPACalculator/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/Charl/AndroidStudioProjects/GPACalculator/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Charl/AndroidStudioProjects/GPACalculator/app/src/main/res/layout/fragment_classgpa.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Charl/AndroidStudioProjects/GPACalculator/app/src/main/res/layout/fragment_home.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Charl/AndroidStudioProjects/GPACalculator/app/src/main/res/layout/fragment_profile.xml" value="0.26851851851851855" />
       </map>
     </option>
   </component>

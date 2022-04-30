@@ -13,6 +13,7 @@ import com.codepathfinalprojectacademics.gpacalculator.databinding.ActivityMainB
 import com.codepathfinalprojectacademics.gpacalculator.fragments.Classgpa;
 import com.codepathfinalprojectacademics.gpacalculator.fragments.Home;
 import com.codepathfinalprojectacademics.gpacalculator.fragments.Profile;
+import com.parse.ParseUser;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
@@ -36,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
                     replaceFragment(new Classgpa());
                     break;
                 case R.id.profile:
+                    if(ParseUser.getCurrentUser() == null) {
+                        Toast.makeText(this, "Please log in to see your profile", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+
                     Toast.makeText(this, "Switched to Profile Fragment", Toast.LENGTH_SHORT).show();
                     replaceFragment(new Profile());
                     break;
