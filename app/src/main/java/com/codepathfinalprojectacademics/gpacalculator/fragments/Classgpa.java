@@ -9,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.codepathfinalprojectacademics.gpacalculator.R;
+import com.codepathfinalprojectacademics.gpacalculator.Section;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,5 +65,21 @@ public class Classgpa extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_classgpa, container, false);
+    }
+
+    /**
+     * Calculate the grade for a class
+     * @param sections list of all the grade distributions
+     * @return the current grade for that class
+     */
+    private static float calculateGrade(ArrayList<Section>sections) {
+        float currentGrade = 0f;
+
+        for(int i = 0; i < sections.size(); i++) {
+            Section section = sections.get(i);
+            currentGrade += section.getWorth() * section.getGrade();
+        }
+
+        return currentGrade;
     }
 }
