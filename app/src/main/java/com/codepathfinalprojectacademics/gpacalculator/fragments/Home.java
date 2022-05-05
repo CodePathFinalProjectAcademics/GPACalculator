@@ -12,12 +12,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.codepathfinalprojectacademics.gpacalculator.Course;
 import com.codepathfinalprojectacademics.gpacalculator.HomeAdapter;
 import com.codepathfinalprojectacademics.gpacalculator.R;
 import com.codepathfinalprojectacademics.gpacalculator.Semesters;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +31,17 @@ public class Home extends Fragment {
     private RecyclerView rvHome;
     private HomeAdapter adapter;
     private List<Semesters> allSymesters;
+
+    /**
+     * Convert the letter grades to credit earned
+     */
+    private static final Map<String, Float>gradeConversionTable = new HashMap<String, Float>() {{
+        put("A+", 4.0f); put("A", 4.0f); put("A-", 3.7f);
+        put("B+", 3.3f); put("B", 3.0f); put("B-", 2.7f);
+        put("C+", 2.3f); put("C", 2.0f); put("C-", 1.7f);
+        put("D+", 1.3f); put("D", 1.0f); put("D-", 0.7f);
+        put("F", 0.0f);
+    }};
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -86,5 +100,38 @@ public class Home extends Fragment {
 
         rvHome.setAdapter(adapter);
         rvHome.setLayoutManager(new LinearLayoutManager(getContext()));
+    }
+
+    /**
+     * Calculate the final GPA from the user
+     * @param semester all the courses that the user have taken
+     * @return current GPA of the user
+     */
+    private float calculateGPA(ArrayList<Course>semester) {
+        // get these values from the user
+        float currentGPA = 0f;
+        int totalCreditEarned = 0;
+
+        int totalCreditAttempted = totalCreditEarned;
+
+        // get the current grade point from the user's past semesters
+        float totalGradePoint = currentGPA * totalCreditEarned;
+
+        for(int i = 0; i < semester.size(); i++) {
+            Course course = semester.get(i);
+
+            // count the credits in each course
+            totalCreditAttempted += course.getCredits();
+
+            // calculate the total grade point
+            totalGradePoint += course.getCredits() * (float) course.getGrade();
+        }
+
+        // avoid division by zero error
+        if(totalCreditAttempted == 0) {
+            return 0f;
+        }
+
+        return totalGradePoint / totalCreditAttempted;
     }
 }
