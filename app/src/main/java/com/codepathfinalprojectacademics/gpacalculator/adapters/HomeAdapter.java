@@ -1,4 +1,4 @@
-package com.codepathfinalprojectacademics.gpacalculator;
+package com.codepathfinalprojectacademics.gpacalculator.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.codepathfinalprojectacademics.gpacalculator.R;
+import com.codepathfinalprojectacademics.gpacalculator.Semesters;
 
 import java.util.List;
 
@@ -26,7 +29,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view =LayoutInflater.from(context).inflate(R.layout.gpa_home, parent, false);
+        View view =LayoutInflater.from(context).inflate(R.layout.fragment_home, parent, false);
         return new ViewHolder(view);
     }
 

@@ -14,4 +14,13 @@
     <string name="profile_log_out">Log out</string>
     <string name="username">User\'s name</string>
     <string name="user_profile_pic">TODO</string>
+    <string name="textview">TextView</string>
+    <string name="string_textview">textView</string>
+    <string name="add_assigments">Add Assigments</string>
+    <string name="assigment_name">Assigment Name</string>
+    <string name="add_assigment">Add Assigment</string>
+    <string name="grade">Grade</string>
+    <string name="string_grade">Grade</string>
+    <string name="weight">Weight</string>
+    <string name="string_weight">Weight</string>
 </resources>
