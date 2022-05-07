@@ -25,7 +25,6 @@ A calculator that can calculate a user's GPA based on the amount of credits, pas
 **Required Must-have Stories**
 
 * User can calculate their overall GPA for college & high school.
-* User can calculate/predict thier grade for a specific grade.
 * [X] Bottom View Navigation that can switch between the two options above
 * When user exits out of app and reopens it, previously submitted info will still be there
 * [X] User can create an account
@@ -34,9 +33,11 @@ A calculator that can calculate a user's GPA based on the amount of credits, pas
 
 **Optional Nice-to-have Stories**
 
+* User can predict thier grade for a specific grade.
 * Inform user of what grades and credit they need to get to obtain a desired GPA
 * For the GPA Activty have it be more broken down into Semesters
 * Have a GPA scale based on the college/high school they go to
+
 ###
 ### GIF Progress [WEEK 4]
 ![rxamPXO8NL](https://github.com/CodePathFinalProjectAcademics/GPACalculator/blob/main/Week14%20-%20GPA%20Calculator.gif)
