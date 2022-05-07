@@ -1,6 +1,7 @@
 package com.codepathfinalprojectacademics.gpacalculator.fragments;
 
-import android.content.Intent;
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,46 +11,58 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TextView;
 
-import com.codepathfinalprojectacademics.gpacalculator.AssigmentActivity;
 import com.codepathfinalprojectacademics.gpacalculator.R;
-import com.codepathfinalprojectacademics.gpacalculator.Section;
+import com.codepathfinalprojectacademics.gpacalculator.models.Section;
 import com.codepathfinalprojectacademics.gpacalculator.adapters.ClassGPAAdapter;
 
 import java.util.ArrayList;
 
 public class Classgpa extends Fragment {
-    String[] assignments = {};
+    private ClassGPAAdapter adapter;
+    private ArrayList<Section> sectionArrayList;
+    private Context context;
 
     public Classgpa() {
         // Required empty public constructor
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_classgpa, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_classgpa, container, false);
 
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
-        recyclerView.setAdapter(new ClassGPAAdapter(assignments));
+        RecyclerView recyclerView = rootView.findViewById(R.id.recyclerViewCard);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        sectionArrayList = new ArrayList<>();
 
-        Button addAssigments = view.findViewById(R.id.addAssigmentsBtn);
-        addAssigments.setOnClickListener(v -> goToAssigmentActivity());
+        adapter = new ClassGPAAdapter(context, sectionArrayList);
+        recyclerView.setAdapter(adapter);
 
-        return view;
+        CreateDataForCards();
+
+        return rootView;
+    }
+    @SuppressLint("NotifyDataSetChanged")
+    private void CreateDataForCards(){
+        Section section = new Section("Exams", 50, 80);
+        sectionArrayList.add(section);
+
+        section = new Section("Homework", 20, 95);
+        sectionArrayList.add(section);
+
+        section = new Section("Attendence", 10, 100);
+        sectionArrayList.add(section);
+
+        section = new Section("Labs", 10, 97);
+        sectionArrayList.add(section);
+
+        adapter.notifyDataSetChanged();
     }
 
-    public void goToAssigmentActivity() {
-        Intent intent = new Intent(getActivity(), AssigmentActivity.class);
-        startActivity(intent);
-    }
+//    public void goToAssigmentActivity() {
+//        Intent intent = new Intent(getActivity(), AssigmentActivity.class);
+//        startActivity(intent);
+//    }
 
     /**
      * Calculate the grade for a class
