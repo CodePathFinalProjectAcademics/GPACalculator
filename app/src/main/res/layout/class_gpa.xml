@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="8dp"
     android:orientation="vertical">
 
@@ -19,9 +19,9 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_weight="1"
+            android:background="@drawable/ic_baseline_check_box_outline_blank_24"
             android:gravity="center"
             android:text="Section Name"
-            android:background="@drawable/ic_baseline_check_box_outline_blank_24"
             android:textColor="@color/black" />
 
         <TextView
@@ -29,10 +29,10 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:gravity="center"
-            android:textColor="@color/black"
             android:background="@drawable/ic_baseline_check_box_outline_blank_24"
-            android:text="Worth" />
+            android:gravity="center"
+            android:text="Worth"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tvscore"
@@ -45,49 +45,5 @@
             android:textColor="@color/black" />
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/btngpa_add"
-        android:layout_width="269dp"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/class_layout"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="87dp"
-        android:layout_marginEnd="42dp"
-        android:layout_weight="1"
-        android:background="@color/green"
-        android:text="Add Assignment"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <ImageView
-        android:id="@+id/imvgpa"
-        android:layout_width="139dp"
-        android:layout_height="119dp"
-        android:layout_alignTop="@id/btngpa_add"
-        android:layout_alignBottom="@id/btngpa_add"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="513dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="-585dp"
-        android:layout_weight="1"
-        app:srcCompat="@drawable/circle" />
-
-    <TextView
-        android:id="@+id/tvgpa_result"
-        android:layout_width="wrap_content"
-        android:layout_height="67dp"
-        android:layout_alignTop="@id/btngpa_add"
-        android:layout_alignBottom="@id/btngpa_add"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="536dp"
-        android:layout_marginEnd="23dp"
-        android:layout_marginBottom="-555dp"
-        android:layout_weight="1"
-        android:backgroundTint="@color/white"
-        android:text="87%"
-        android:textColor="@color/black"
-        android:textSize="48sp"
-        android:textStyle="bold" />
 
 </RelativeLayout>

@@ -12,7 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.codepathfinalprojectacademics.gpacalculator.Course;
+import com.codepathfinalprojectacademics.gpacalculator.models.Course;
 import com.codepathfinalprojectacademics.gpacalculator.adapters.HomeAdapter;
 import com.codepathfinalprojectacademics.gpacalculator.R;
 import com.codepathfinalprojectacademics.gpacalculator.Semesters;

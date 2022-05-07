@@ -1,4 +1,4 @@
-package com.codepathfinalprojectacademics.gpacalculator;
+package com.codepathfinalprojectacademics.gpacalculator.models;
 
 public class Section {
     private String section_name;
