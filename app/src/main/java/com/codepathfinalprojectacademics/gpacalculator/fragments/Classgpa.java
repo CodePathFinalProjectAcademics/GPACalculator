@@ -2,8 +2,10 @@ package com.codepathfinalprojectacademics.gpacalculator.fragments;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,7 +13,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.codepathfinalprojectacademics.gpacalculator.CreateAssignment;
 import com.codepathfinalprojectacademics.gpacalculator.R;
 import com.codepathfinalprojectacademics.gpacalculator.models.Section;
 import com.codepathfinalprojectacademics.gpacalculator.adapters.ClassGPAAdapter;
@@ -23,6 +27,9 @@ public class Classgpa extends Fragment {
     private ArrayList<Section> sectionArrayList;
     private Context context;
 
+    private static final int ACTIVITY_REQ_CODE = 10;
+    private Button addNewSectionButton;
+
     public Classgpa() {
         // Required empty public constructor
     }
@@ -31,6 +38,7 @@ public class Classgpa extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_classgpa, container, false);
 
+        addNewSectionButton = rootView.findViewById(R.id.addNewSectionBtn);
         RecyclerView recyclerView = rootView.findViewById(R.id.recyclerViewCard);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         sectionArrayList = new ArrayList<>();
@@ -38,7 +46,14 @@ public class Classgpa extends Fragment {
         adapter = new ClassGPAAdapter(context, sectionArrayList);
         recyclerView.setAdapter(adapter);
 
-        CreateDataForCards();
+//        CreateDataForCards();
+
+        addNewSectionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToAssignmentActivity();
+            }
+        });
 
         return rootView;
     }
@@ -59,10 +74,26 @@ public class Classgpa extends Fragment {
         adapter.notifyDataSetChanged();
     }
 
-//    public void goToAssigmentActivity() {
-//        Intent intent = new Intent(getActivity(), AssigmentActivity.class);
-//        startActivity(intent);
-//    }
+    public void goToAssignmentActivity() {
+        Intent intent = new Intent(getActivity(), CreateAssignment.class);
+        startActivityForResult(intent, 1);
+    }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            String name = data.getStringExtra("name");
+            String worth = data.getStringExtra("worth");
+            String grade = data.getStringExtra("grade");
+
+            Section section = new Section(name, Float.parseFloat(worth), Float.parseFloat(grade));
+
+            sectionArrayList.add(section);
+            adapter.notifyDataSetChanged();
+        }
+    }
 
     /**
      * Calculate the grade for a class
