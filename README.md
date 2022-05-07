@@ -39,7 +39,7 @@ A calculator that can calculate a user's GPA based on the amount of credits, pas
 * Have a GPA scale based on the college/high school they go to
 ###
 ### GIF Progress [WEEK 4]
-![rxamPXO8NL](https://github.com/CodePathFinalProjectAcademics/GPACalculator/blob/main/GPAcalc%20demo.gif)
+![rxamPXO8NL](https://github.com/CodePathFinalProjectAcademics/GPACalculator/blob/main/Week14%20-%20GPA%20Calculator.gif)
 
 ### Screen Progress [WEEK 4]
 * GPA Screen
