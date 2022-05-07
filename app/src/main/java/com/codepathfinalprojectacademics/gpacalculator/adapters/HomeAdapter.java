@@ -1,5 +1,6 @@
 package com.codepathfinalprojectacademics.gpacalculator.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,66 +13,57 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.codepathfinalprojectacademics.gpacalculator.R;
-import com.codepathfinalprojectacademics.gpacalculator.Semesters;
+import com.codepathfinalprojectacademics.gpacalculator.models.Course;
+import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     private Context context;
-    private List<Semesters> semester;
+    private final ArrayList<Course> course;
 
-    public HomeAdapter(Context context, List<Semesters> semester) {
-        this.context = this.context;
-        this.semester = semester;
+    public HomeAdapter(Context context, ArrayList<Course> semester) {
+        this.context = context;
+        this.course = semester;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view =LayoutInflater.from(context).inflate(R.layout.fragment_home, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.gpa_home, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Semesters semesters = semester.get(position);
-        holder.bind(semesters);
+        Course semester = course.get(position);
 
+        holder.setDetails(semester);
     }
 
     @Override
     public int getItemCount() {
-        return semester.size();
+        return course.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvclass;
-        private TextView tvgrade;
-        private TextView tvcredit;
-        private TextView tvwiegth;
-        private TextView tvgpa_resulr;
-        private TextView tvgpa_question;
-        private Button btngpa_add;
-        private ImageView imvgpa;
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView txtCourseName, txtGrade, txtCredit;
 
-
-        public ViewHolder(@NonNull View itemView){
+        ViewHolder(View itemView){
             super(itemView);
-            tvclass = itemView.findViewById(R.id.tvsection);
-            tvgrade = itemView.findViewById(R.id.tvscore);
-            tvcredit = itemView.findViewById(R.id.tvcredit);
-            tvwiegth = itemView.findViewById(R.id.tvworth);
-            tvgpa_resulr = itemView.findViewById(R.id.tvgpa_result);
-            tvgpa_question = itemView.findViewById(R.id.tvgpa_question);
-            btngpa_add = itemView.findViewById(R.id.btngpa_add);
-            imvgpa = itemView.findViewById(R.id.imvgpa);
 
+            txtCourseName = itemView.findViewById(R.id.tvsection);
+            txtGrade = itemView.findViewById(R.id.tvscore);
+            txtCredit = itemView.findViewById(R.id.tvcredit);
         }
 
-        public void bind(Semesters semesters) {
-           //tvclass.setText(semesters.);
-
+        @SuppressLint("SetTextI18n")
+        void setDetails(Course course){
+            txtCourseName.setText(course.getCourseName());
+            txtGrade.setText(Integer.toString((int) course.getGrade()));
+            txtCredit.setText(Integer.toString((int) course.getCredits()));
         }
     }
 }

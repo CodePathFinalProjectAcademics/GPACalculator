@@ -1,9 +1,8 @@
 package com.codepathfinalprojectacademics.gpacalculator.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,17 +14,14 @@ import android.view.ViewGroup;
 import com.codepathfinalprojectacademics.gpacalculator.models.Course;
 import com.codepathfinalprojectacademics.gpacalculator.adapters.HomeAdapter;
 import com.codepathfinalprojectacademics.gpacalculator.R;
-import com.codepathfinalprojectacademics.gpacalculator.Semesters;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Home extends Fragment {
-    private RecyclerView rvHome;
+    private ArrayList<Course> classArrayList;
     private HomeAdapter adapter;
-    private List<Semesters> allSymesters;
 
     /**
      * Convert the letter grades to credit earned
@@ -37,31 +33,41 @@ public class Home extends Fragment {
         put("D+", 1.3f); put("D", 1.0f); put("D-", 0.7f);
         put("F", 0.0f);
     }};
+
     public Home() {
         // Required empty public constructor
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+
+        RecyclerView recyclerView = rootView.findViewById(R.id.rvHome);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        classArrayList = new ArrayList<>();
+
+        adapter = new HomeAdapter(getContext(), classArrayList);
+        recyclerView.setAdapter(adapter);
+        CreateDataForCards();
+
+        return rootView;
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        rvHome = view.findViewById(R.id.rvHome);
+    @SuppressLint("NotifyDataSetChanged")
+    private void CreateDataForCards(){
+        Course course = new Course("Math 391", 95, 4);
+        classArrayList.add(course);
 
-        allSymesters= new ArrayList<>();
-        adapter = new HomeAdapter(getContext(), allSymesters);
+        course = new Course("FIQWS 10003", 90, 3);
+        classArrayList.add(course);
 
-        rvHome.setAdapter(adapter);
-        rvHome.setLayoutManager(new LinearLayoutManager(getContext()));
+        course = new Course("Phys 208", 85, 4);
+        classArrayList.add(course);
+
+        course = new Course("Math 346", 80, 4);
+        classArrayList.add(course);
+
+        adapter.notifyDataSetChanged();
     }
 
     /**

@@ -50,6 +50,7 @@ public class ClassGPAAdapter extends RecyclerView.Adapter<ClassGPAAdapter.ClassG
 
         ClassGPAHolder(View itemView){
             super(itemView);
+
             txtAssigmentNameCard = itemView.findViewById(R.id.tvsection);
             txtWeightCard = itemView.findViewById(R.id.tvworth);
             txtGradeCard = itemView.findViewById(R.id.tvscore);

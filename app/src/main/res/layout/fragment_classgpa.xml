@@ -5,14 +5,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.Classgpa">
+    tools:context=".fragments.Classgpa"
+    android:background="@color/teal_700">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewCard"
-        android:layout_width="416dp"
-        android:layout_height="667dp"
+        android:layout_width="409dp"
+        android:layout_height="827dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="372dp"
+        android:layout_marginBottom="86dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.156" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

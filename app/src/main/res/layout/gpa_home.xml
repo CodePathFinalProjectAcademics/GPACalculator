@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="8dp"
     android:orientation="vertical">
 
@@ -19,97 +19,31 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:gravity="center"
             android:background="@drawable/ic_baseline_check_box_outline_blank_24"
-            android:textColor="@color/black"
-            android:text="Class Name" />
+            android:gravity="center"
+            android:text="Class Name"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tvscore"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:gravity="center"
             android:background="@drawable/ic_baseline_check_box_outline_blank_24"
-            android:textColor="@color/black"
-            android:text="Grade" />
+            android:gravity="center"
+            android:text="Grade"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/tvcredit"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_weight="1"
-            android:gravity="center"
             android:background="@drawable/ic_baseline_check_box_outline_blank_24"
-            android:textColor="@color/black"
-            android:text="Credit " />
-
-        <TextView
-            android:id="@+id/tvworth"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_weight="1"
             android:gravity="center"
-            android:background="@drawable/ic_baseline_check_box_outline_blank_24"
-            android:textColor="@color/black"
-            android:text="Weight" />
+            android:text="Credit "
+            android:textColor="@color/black" />
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/btngpa_add"
-        android:layout_width="204dp"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/class_layout"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="82dp"
-        android:layout_marginEnd="84dp"
-        android:layout_weight="1"
-        android:background="@color/green"
-        android:text="Add Class"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <ImageView
-        android:id="@+id/imvgpa"
-        android:layout_width="139dp"
-        android:layout_height="119dp"
-        android:layout_alignTop="@id/btngpa_add"
-        android:layout_alignBottom="@id/btngpa_add"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="513dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="-585dp"
-        android:layout_weight="1"
-        app:srcCompat="@drawable/circle" />
-
-    <TextView
-        android:id="@+id/tvgpa_result"
-        android:layout_width="wrap_content"
-        android:layout_height="67dp"
-        android:layout_alignTop="@id/btngpa_add"
-        android:layout_alignBottom="@id/btngpa_add"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="537dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="-556dp"
-        android:layout_weight="1"
-        android:backgroundTint="@color/white"
-        android:text="3.5"
-        android:textColor="@color/black"
-        android:textSize="48sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/tvgpa_question"
-        android:layout_width="169dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/btngpa_add"
-        android:layout_marginEnd="79dp"
-        android:layout_marginBottom="-522dp"
-        android:backgroundTint="@color/white"
-        android:text="What is your GPA?"
-        android:textColor="@color/black"
-        android:textSize="20sp" />
 
 </RelativeLayout>

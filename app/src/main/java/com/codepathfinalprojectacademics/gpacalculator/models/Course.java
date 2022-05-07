@@ -1,10 +1,15 @@
 package com.codepathfinalprojectacademics.gpacalculator.models;
 
 public class Course {
-    private String courseName;
-    private float grade;
-    private int credits;
-    private String weight;
+    private final String courseName;
+    private final float grade;
+    private final int credits;
+
+    public Course(String courseName, float grade, int credits) {
+        this.courseName = courseName;
+        this.grade = grade;
+        this.credits = credits;
+    }
 
     public String getCourseName() {
         return courseName;
@@ -16,9 +21,5 @@ public class Course {
 
     public int getCredits() {
         return credits;
-    }
-
-    public String getWeight() {
-        return weight;
     }
 }
