@@ -1,8 +1,10 @@
 package com.codepathfinalprojectacademics.gpacalculator.fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,10 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.codepathfinalprojectacademics.gpacalculator.CreateAssignment;
+import com.codepathfinalprojectacademics.gpacalculator.CreateCourse;
 import com.codepathfinalprojectacademics.gpacalculator.models.Course;
 import com.codepathfinalprojectacademics.gpacalculator.adapters.HomeAdapter;
 import com.codepathfinalprojectacademics.gpacalculator.R;
+import com.codepathfinalprojectacademics.gpacalculator.models.Section;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,6 +28,8 @@ import java.util.Map;
 public class Home extends Fragment {
     private ArrayList<Course> classArrayList;
     private HomeAdapter adapter;
+
+    private Button createCourseButton;
 
     /**
      * Convert the letter grades to credit earned
@@ -42,15 +50,41 @@ public class Home extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
+        createCourseButton = rootView.findViewById(R.id.addCourseBtn);
         RecyclerView recyclerView = rootView.findViewById(R.id.rvHome);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         classArrayList = new ArrayList<>();
 
         adapter = new HomeAdapter(getContext(), classArrayList);
         recyclerView.setAdapter(adapter);
-        CreateDataForCards();
+
+        createCourseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), CreateCourse.class);
+                startActivityForResult(intent, 2);
+            }
+        });
+//        CreateDataForCards();
+
+        adapter.notifyDataSetChanged();
 
         return rootView;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 2) {
+            String name = data.getStringExtra("name");
+            String grade = data.getStringExtra("grade");
+            String credits = data.getStringExtra("credits");
+
+            Course course = new Course(name, Float.parseFloat(grade), Integer.parseInt(credits));
+
+            classArrayList.add(course);
+            adapter.notifyDataSetChanged();
+        }
     }
 
     @SuppressLint("NotifyDataSetChanged")
