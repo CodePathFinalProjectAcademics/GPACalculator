@@ -1,25 +1,46 @@
 package com.codepathfinalprojectacademics.gpacalculator.models;
 
-public class Section {
-    private final String section_name;
-    private final float worth;
-    private final float grade;
+import com.parse.ParseClassName;
+import com.parse.ParseObject;
+import com.parse.ParseUser;
 
-    public Section(String section_name, float worth, float grade) {
-        this.section_name = section_name;
-        this.worth = worth;
-        this.grade = grade;
+@ParseClassName("Section")
+public class Section extends ParseObject {
+    private static final String KEY_NAME = "name";
+    private static final String KEY_GRADE = "grade";
+    private static final String KEY_PERCENTAGE = "percentage";
+    private static final String KEY_USER = "user";
+
+
+    public String getName() {
+        return getString(KEY_NAME);
     }
 
-    public String getSection_name() {
-        return section_name;
+    public void setName(String name) {
+        put(KEY_NAME, name);
     }
 
-    public float getWorth() {
-        return worth;
+    public float getPercentage() {
+        return (float) getDouble(KEY_PERCENTAGE);
+    }
+
+    public void setPercentage(float percentage) {
+        put(KEY_PERCENTAGE, percentage);
+    }
+
+    public ParseUser getUser() {
+        return getParseUser(KEY_USER);
+    }
+
+    public void setUser(ParseUser user) {
+        put(KEY_USER, user);
     }
 
     public float getGrade() {
-        return grade;
+        return (float) getDouble(KEY_GRADE);
+    }
+
+    public void setGrade(float grade) {
+        put(KEY_GRADE, grade);
     }
 }

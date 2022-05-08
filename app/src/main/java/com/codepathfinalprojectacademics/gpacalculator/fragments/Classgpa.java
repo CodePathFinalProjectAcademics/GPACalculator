@@ -14,13 +14,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.codepathfinalprojectacademics.gpacalculator.CreateAssignment;
 import com.codepathfinalprojectacademics.gpacalculator.R;
 import com.codepathfinalprojectacademics.gpacalculator.models.Section;
 import com.codepathfinalprojectacademics.gpacalculator.adapters.ClassGPAAdapter;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Classgpa extends Fragment {
     private ClassGPAAdapter adapter;
@@ -46,8 +53,6 @@ public class Classgpa extends Fragment {
         adapter = new ClassGPAAdapter(context, sectionArrayList);
         recyclerView.setAdapter(adapter);
 
-//        CreateDataForCards();
-
         addNewSectionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,28 +60,33 @@ public class Classgpa extends Fragment {
             }
         });
 
+        query();
+
         return rootView;
-    }
-    @SuppressLint("NotifyDataSetChanged")
-    private void CreateDataForCards(){
-        Section section = new Section("Exams", 50, 80);
-        sectionArrayList.add(section);
-
-        section = new Section("Homework", 20, 95);
-        sectionArrayList.add(section);
-
-        section = new Section("Attendence", 10, 100);
-        sectionArrayList.add(section);
-
-        section = new Section("Labs", 10, 97);
-        sectionArrayList.add(section);
-
-        adapter.notifyDataSetChanged();
     }
 
     public void goToAssignmentActivity() {
         Intent intent = new Intent(getActivity(), CreateAssignment.class);
         startActivityForResult(intent, 1);
+    }
+
+    private void query() {
+        ParseQuery<Section>q = ParseQuery.getQuery(Section.class);
+        q.include("user");
+        q.whereEqualTo("user", ParseUser.getCurrentUser());
+
+        q.findInBackground(new FindCallback<Section>() {
+            @Override
+            public void done(List<Section> objects, ParseException e) {
+                if(e != null) {
+                    System.out.println("Error with querying");
+                    return;
+                }
+
+                sectionArrayList.addAll(objects);
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 
 
@@ -88,12 +98,33 @@ public class Classgpa extends Fragment {
             String worth = data.getStringExtra("worth");
             String grade = data.getStringExtra("grade");
 
-            Section section = new Section(name, Float.parseFloat(worth), Float.parseFloat(grade));
-
-            sectionArrayList.add(section);
-            adapter.notifyDataSetChanged();
+            saveSection(name, Float.parseFloat(grade), Float.parseFloat(worth));
         }
     }
+
+    private void saveSection(String sectionName, float grade, float percentage) {
+        Section section = new Section();
+        section.setUser(ParseUser.getCurrentUser());
+        section.setName(sectionName);
+        section.setPercentage(percentage);
+        section.setGrade(grade);
+
+        sectionArrayList.add(section);
+        adapter.notifyDataSetChanged();
+
+        section.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if(e != null) {
+                    System.out.println("Error while saving");
+                    return;
+                }
+
+                Toast.makeText(getContext(), "Save Successfully", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 
     /**
      * Calculate the grade for a class
@@ -105,7 +136,7 @@ public class Classgpa extends Fragment {
 
         for(int i = 0; i < sections.size(); i++) {
             Section section = sections.get(i);
-            currentGrade += section.getWorth() * section.getGrade();
+            currentGrade += section.getPercentage() * section.getGrade();
         }
 
         return currentGrade;
