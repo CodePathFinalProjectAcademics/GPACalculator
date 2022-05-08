@@ -60,6 +60,7 @@ public class Classgpa extends Fragment {
             }
         });
 
+        // grab all data from parse
         query();
 
         return rootView;
@@ -70,6 +71,9 @@ public class Classgpa extends Fragment {
         startActivityForResult(intent, 1);
     }
 
+    /**
+     * Grab all data entries from parse
+     */
     private void query() {
         ParseQuery<Section>q = ParseQuery.getQuery(Section.class);
         q.include("user");
@@ -90,6 +94,9 @@ public class Classgpa extends Fragment {
     }
 
 
+    /**
+     * Grab the user entries from the creation activity
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

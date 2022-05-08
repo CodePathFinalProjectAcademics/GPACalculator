@@ -61,9 +61,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
         @SuppressLint("SetTextI18n")
         void setDetails(Course course){
-            txtCourseName.setText(course.getCourseName());
-            txtGrade.setText(Integer.toString((int) course.getGrade()));
-            txtCredit.setText(Integer.toString((int) course.getCredits()));
+            txtCourseName.setText(course.getName());
+            txtGrade.setText(Float.toString(course.getGrade()));
+            txtCredit.setText(Integer.toString(course.getCredits()));
         }
     }
 }
