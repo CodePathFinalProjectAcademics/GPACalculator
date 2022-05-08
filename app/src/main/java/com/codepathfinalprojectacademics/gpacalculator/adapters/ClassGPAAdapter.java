@@ -58,9 +58,12 @@ public class ClassGPAAdapter extends RecyclerView.Adapter<ClassGPAAdapter.ClassG
 
         @SuppressLint("SetTextI18n")
         void setDetails(Section assignment){
-            txtAssigmentNameCard.setText(assignment.getSection_name());
-            txtWeightCard.setText(Integer.toString((int) assignment.getWorth()));
-            txtGradeCard.setText(Integer.toString((int) assignment.getGrade()));
+            System.out.println(assignment.getPercentage());
+            System.out.println(assignment.getGrade());
+
+            txtAssigmentNameCard.setText(assignment.getName());
+            txtWeightCard.setText(String.valueOf(assignment.getPercentage()));
+            txtGradeCard.setText(String.valueOf(assignment.getGrade()));
         }
     }
 }

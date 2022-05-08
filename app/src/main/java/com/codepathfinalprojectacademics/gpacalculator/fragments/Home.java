@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.codepathfinalprojectacademics.gpacalculator.CreateAssignment;
 import com.codepathfinalprojectacademics.gpacalculator.CreateCourse;
@@ -20,9 +21,15 @@ import com.codepathfinalprojectacademics.gpacalculator.models.Course;
 import com.codepathfinalprojectacademics.gpacalculator.adapters.HomeAdapter;
 import com.codepathfinalprojectacademics.gpacalculator.R;
 import com.codepathfinalprojectacademics.gpacalculator.models.Section;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Home extends Fragment {
@@ -65,13 +72,42 @@ public class Home extends Fragment {
                 startActivityForResult(intent, 2);
             }
         });
-//        CreateDataForCards();
 
-        adapter.notifyDataSetChanged();
+        // grab all data from parse
+        query();
 
         return rootView;
     }
 
+    /**
+     * Grab all data entries from parse
+     */
+    private void query() {
+        ParseQuery<Course> q = ParseQuery.getQuery(Course.class);
+        q.include("user");
+
+        // only look for the entries created by the current user
+        q.whereEqualTo("user", ParseUser.getCurrentUser());
+
+        // add them to the adapter
+        q.findInBackground(new FindCallback<Course>() {
+            @Override
+            public void done(List<Course> objects, ParseException e) {
+                if (e != null) {
+                    System.out.println("Error with querying");
+                    return;
+                }
+
+                classArrayList.addAll(objects);
+                adapter.notifyDataSetChanged();
+            }
+        });
+    }
+
+
+    /**
+     * Grab the user entries from the creation activity
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -80,28 +116,34 @@ public class Home extends Fragment {
             String grade = data.getStringExtra("grade");
             String credits = data.getStringExtra("credits");
 
-            Course course = new Course(name, Float.parseFloat(grade), Integer.parseInt(credits));
-
-            classArrayList.add(course);
-            adapter.notifyDataSetChanged();
+            // save the course to parse and update the adapter
+            saveCourse(name, Integer.parseInt(credits), Float.parseFloat(grade));
         }
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    private void CreateDataForCards(){
-        Course course = new Course("Math 391", 95, 4);
-        classArrayList.add(course);
+    private void saveCourse(String courseName, int credits, float grade) {
+        Course course = new Course();
+        course.setUser(ParseUser.getCurrentUser());
+        course.setName(courseName);
+        course.setCredits(credits);
+        course.setGrade(grade);
+        course.setWeight("");
 
-        course = new Course("FIQWS 10003", 90, 3);
         classArrayList.add(course);
-
-        course = new Course("Phys 208", 85, 4);
-        classArrayList.add(course);
-
-        course = new Course("Math 346", 80, 4);
-        classArrayList.add(course);
-
         adapter.notifyDataSetChanged();
+
+        course.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if(e != null) {
+                    System.out.println("Error while saving");
+                    System.out.println(e.toString());
+                    return;
+                }
+
+                Toast.makeText(getContext(), "Save Successfully", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     /**
