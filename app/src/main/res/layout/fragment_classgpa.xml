@@ -1,37 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.Classgpa"
-    android:background="@color/teal_700">
+    android:background="@color/teal_700"
+    tools:context=".fragments.Classgpa">
+
+    <TextView
+        android:id="@+id/tvAssignmentNameShow"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/ic_baseline_check_box_outline_blank_24"
+        android:gravity="center"
+        android:text="Assignment Name"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvAssignmentWorthShown"
+        android:layout_width="110dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@id/tvAssignmentNameShow"
+        android:background="@drawable/ic_baseline_check_box_outline_blank_24"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="Worth (%)"/>
+
+    <TextView
+        android:id="@+id/tvAssignmentGradeShown"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_toRightOf="@id/tvAssignmentWorthShown"
+        android:background="@drawable/ic_baseline_check_box_outline_blank_24"
+        android:gravity="center"
+        android:text="Grade"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewCard"
-        android:layout_width="409dp"
-        android:layout_height="827dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="372dp"
-        android:layout_marginBottom="86dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.156" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/addNewSectionBtn"
+        android:layout_below="@id/tvAssignmentNameShow"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp" />
 
     <Button
         android:id="@+id/addNewSectionBtn"
-        android:layout_width="140dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="264dp"
+        android:layout_width="200dp"
+        android:layout_height="75dp"
         android:text="@string/add"
-        android:textColor="#00695C"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_toRightOf="@id/ivClassGradeBubble"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_alignTop="@id/ivClassGradeBubble"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:id="@+id/ivClassGradeBubble"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/circle"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"/>
+
+    <TextView
+        android:id="@+id/tvClassGradeShow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ivClassGradeBubble"
+        android:layout_alignTop="@+id/ivClassGradeBubble"
+        android:layout_alignRight="@+id/ivClassGradeBubble"
+        android:layout_alignBottom="@+id/ivClassGradeBubble"
+        android:gravity="center"
+        android:text="100%"
+        android:textColor="@color/black"
+        android:textSize="50sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

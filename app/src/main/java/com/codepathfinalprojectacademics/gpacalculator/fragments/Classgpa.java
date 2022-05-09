@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.codepathfinalprojectacademics.gpacalculator.CreateAssignment;
@@ -33,6 +34,7 @@ public class Classgpa extends Fragment {
     private ClassGPAAdapter adapter;
     private ArrayList<Section> sectionArrayList;
     private Context context;
+    private TextView classGpaResult;
 
     private static final int ACTIVITY_REQ_CODE = 10;
     private Button addNewSectionButton;
@@ -46,6 +48,7 @@ public class Classgpa extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_classgpa, container, false);
 
         addNewSectionButton = rootView.findViewById(R.id.addNewSectionBtn);
+        classGpaResult = rootView.findViewById(R.id.tvClassGradeShow);
         RecyclerView recyclerView = rootView.findViewById(R.id.recyclerViewCard);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         sectionArrayList = new ArrayList<>();
@@ -62,6 +65,7 @@ public class Classgpa extends Fragment {
 
         // grab all data from parse
         query();
+        classGpaResult.setText(calculateGrade(sectionArrayList) + "%");
 
         return rootView;
     }

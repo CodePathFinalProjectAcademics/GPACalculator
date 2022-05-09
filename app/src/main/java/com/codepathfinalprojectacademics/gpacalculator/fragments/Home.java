@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.codepathfinalprojectacademics.gpacalculator.CreateAssignment;
@@ -37,6 +38,7 @@ public class Home extends Fragment {
     private HomeAdapter adapter;
 
     private Button createCourseButton;
+    private TextView gpaHomeResultShow;
 
     /**
      * Convert the letter grades to credit earned
@@ -58,6 +60,7 @@ public class Home extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
         createCourseButton = rootView.findViewById(R.id.addCourseBtn);
+        gpaHomeResultShow = rootView.findViewById(R.id.tvFinalGpaShow);
         RecyclerView recyclerView = rootView.findViewById(R.id.rvHome);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         classArrayList = new ArrayList<>();
@@ -75,6 +78,7 @@ public class Home extends Fragment {
 
         // grab all data from parse
         query();
+        gpaHomeResultShow.setText(String.valueOf(calculateGPA(classArrayList)));
 
         return rootView;
     }
