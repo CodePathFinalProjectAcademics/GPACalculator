@@ -22,6 +22,7 @@ import com.codepathfinalprojectacademics.gpacalculator.models.Course;
 import com.codepathfinalprojectacademics.gpacalculator.adapters.HomeAdapter;
 import com.codepathfinalprojectacademics.gpacalculator.R;
 import com.codepathfinalprojectacademics.gpacalculator.models.Section;
+import com.parse.DeleteCallback;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -38,6 +39,7 @@ public class Home extends Fragment {
     private HomeAdapter adapter;
 
     private Button createCourseButton;
+    private Button deleteAllButton;
     private TextView gpaHomeResultShow;
 
     /**
@@ -60,6 +62,7 @@ public class Home extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
         createCourseButton = rootView.findViewById(R.id.addCourseBtn);
+        deleteAllButton = rootView.findViewById(R.id.deleteAllCourseBtn);
         gpaHomeResultShow = rootView.findViewById(R.id.tvFinalGpaShow);
         RecyclerView recyclerView = rootView.findViewById(R.id.rvHome);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -76,9 +79,37 @@ public class Home extends Fragment {
             }
         });
 
+        deleteAllButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ParseQuery<Course>q = ParseQuery.getQuery(Course.class);
+                q.whereEqualTo("user", ParseUser.getCurrentUser());
+                q.findInBackground(new FindCallback<Course>() {
+                    @Override
+                    public void done(List<Course> objects, ParseException e) {
+                        if (e != null) {
+                            return;
+                        }
+
+                        for (int i = 0; i < objects.size(); i++) {
+                            objects.get(i).deleteInBackground(new DeleteCallback() {
+                                @Override
+                                public void done(ParseException e) {
+                                    if (e != null) {
+                                        System.out.println("Something went wrong");
+                                    }
+                                    adapter.notifyDataSetChanged();
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+        });
+
         // grab all data from parse
         query();
-        gpaHomeResultShow.setText(String.valueOf(calculateGPA(classArrayList)));
+        gpaHomeResultShow.setText(String.format("%.2f", calculateGPA(classArrayList)));
 
         return rootView;
     }
@@ -104,6 +135,8 @@ public class Home extends Fragment {
 
                 classArrayList.addAll(objects);
                 adapter.notifyDataSetChanged();
+                gpaHomeResultShow.setText(String.format("%.2f", calculateGPA(classArrayList)));
+
             }
         });
     }
@@ -135,6 +168,8 @@ public class Home extends Fragment {
 
         classArrayList.add(course);
         adapter.notifyDataSetChanged();
+        gpaHomeResultShow.setText(String.format("%.2f", calculateGPA(classArrayList)));
+
 
         course.saveInBackground(new SaveCallback() {
             @Override

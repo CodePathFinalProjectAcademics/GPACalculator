@@ -98,8 +98,6 @@ public class Classgpa extends Fragment {
         // grab all data from parse
         query();
         classGpaResult.setText(String.format("%.2f", calculateGrade(sectionArrayList)));
-        System.out.println("TOTAL GRADE");
-        System.out.println(calculateGrade(sectionArrayList));
         return rootView;
     }
 
