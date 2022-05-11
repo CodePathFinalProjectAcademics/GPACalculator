@@ -29,11 +29,9 @@ public class MainActivity extends AppCompatActivity {
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             switch(item.getItemId()){
                 case R.id.home:
-                    Toast.makeText(this, "Switched to Home Fragment", Toast.LENGTH_SHORT).show();
                     replaceFragment(new Home());
                     break;
                 case R.id.classgpa:
-                    Toast.makeText(this, "Switched to ClassGPA Fragment", Toast.LENGTH_SHORT).show();
                     replaceFragment(new Classgpa());
                     break;
                 case R.id.profile:
@@ -42,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     }
 
-                    Toast.makeText(this, "Switched to Profile Fragment", Toast.LENGTH_SHORT).show();
                     replaceFragment(new Profile());
                     break;
             }

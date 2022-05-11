@@ -21,6 +21,7 @@ import com.codepathfinalprojectacademics.gpacalculator.CreateAssignment;
 import com.codepathfinalprojectacademics.gpacalculator.R;
 import com.codepathfinalprojectacademics.gpacalculator.models.Section;
 import com.codepathfinalprojectacademics.gpacalculator.adapters.ClassGPAAdapter;
+import com.parse.DeleteCallback;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -38,6 +39,7 @@ public class Classgpa extends Fragment {
 
     private static final int ACTIVITY_REQ_CODE = 10;
     private Button addNewSectionButton;
+    private Button deleteAllButton;
 
     public Classgpa() {
         // Required empty public constructor
@@ -48,6 +50,8 @@ public class Classgpa extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_classgpa, container, false);
 
         addNewSectionButton = rootView.findViewById(R.id.addNewSectionBtn);
+        deleteAllButton = rootView.findViewById(R.id.deleteSectionBtn);
+
         classGpaResult = rootView.findViewById(R.id.tvClassGradeShow);
         RecyclerView recyclerView = rootView.findViewById(R.id.recyclerViewCard);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -63,10 +67,37 @@ public class Classgpa extends Fragment {
             }
         });
 
+        deleteAllButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ParseQuery<Section>q = ParseQuery.getQuery(Section.class);
+                q.whereEqualTo("user", ParseUser.getCurrentUser());
+                q.findInBackground(new FindCallback<Section>() {
+                    @Override
+                    public void done(List<Section> objects, ParseException e) {
+                        if(e != null) {
+                            return;
+                        }
+
+                        for(int i = 0; i < objects.size(); i++) {
+                            objects.get(i).deleteInBackground(new DeleteCallback() {
+                                @Override
+                                public void done(ParseException e) {
+                                    if(e != null) {
+                                        System.out.println("Something went wrong");
+                                    }
+                                    adapter.notifyDataSetChanged();
+                                }
+                            });
+                        }
+                    }
+                });
+            }
+        });
+
         // grab all data from parse
         query();
-        classGpaResult.setText(calculateGrade(sectionArrayList) + "%");
-
+        classGpaResult.setText(String.format("%.2f", calculateGrade(sectionArrayList)));
         return rootView;
     }
 
@@ -93,6 +124,9 @@ public class Classgpa extends Fragment {
 
                 sectionArrayList.addAll(objects);
                 adapter.notifyDataSetChanged();
+//                classGpaResult.setText(Float.toString(calculateGrade(sectionArrayList)));
+                classGpaResult.setText(String.format("%.2f", calculateGrade(sectionArrayList)));
+
             }
         });
     }
@@ -122,6 +156,8 @@ public class Classgpa extends Fragment {
 
         sectionArrayList.add(section);
         adapter.notifyDataSetChanged();
+        classGpaResult.setText(String.format("%.2f", calculateGrade(sectionArrayList)));
+
 
         section.saveInBackground(new SaveCallback() {
             @Override
@@ -147,7 +183,7 @@ public class Classgpa extends Fragment {
 
         for(int i = 0; i < sections.size(); i++) {
             Section section = sections.get(i);
-            currentGrade += section.getPercentage() * section.getGrade();
+            currentGrade += (section.getPercentage() / 100) * section.getGrade();
         }
 
         return currentGrade;
