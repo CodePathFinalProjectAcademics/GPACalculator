@@ -61,12 +61,12 @@
         android:id="@+id/addNewSectionBtn"
         android:layout_width="200dp"
         android:layout_height="75dp"
-        android:text="@string/add"
+        android:layout_alignTop="@id/ivClassGradeBubble"
         android:layout_toRightOf="@id/ivClassGradeBubble"
+        android:text="@string/add"
         android:textColor="@color/black"
         android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_alignTop="@id/ivClassGradeBubble"/>
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/ivClassGradeBubble"
@@ -88,7 +88,17 @@
         android:gravity="center"
         android:text="100%"
         android:textColor="@color/black"
-        android:textSize="50sp"
+        android:textSize="45sp"
         android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/deleteSectionBtn"
+        android:layout_width="129dp"
+        android:layout_height="67dp"
+        android:layout_below="@+id/recyclerViewCard"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="129dp"
+        android:text="@string/delete_all" />
 
 </RelativeLayout>
