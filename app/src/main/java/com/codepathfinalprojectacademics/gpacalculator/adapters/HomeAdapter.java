@@ -17,12 +17,24 @@ import com.codepathfinalprojectacademics.gpacalculator.models.Course;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     private Context context;
     private final ArrayList<Course> course;
+    /**
+     * Convert the quality points earned to letter grade
+     */
+    private static final Map<Float, String> gradeConversionTable = new HashMap<Float, String>() {{
+        put(4.0f, "A+"); put(4.0f, "A"); put(3.7f, "A-");
+        put(3.3f, "B+"); put(3.0f, "B"); put(2.7f, "B-");
+        put(2.3f, "C+"); put(2.0f, "C"); put(1.7f, "C-");
+        put(1.3f, "D+"); put(1.0f, "D"); put(0.7f, "D-");
+        put(0.0f, "F");
+    }};
 
     public HomeAdapter(Context context, ArrayList<Course> semester) {
         this.context = context;
@@ -62,7 +74,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         @SuppressLint("SetTextI18n")
         void setDetails(Course course){
             txtCourseName.setText(course.getName());
-            txtGrade.setText(Float.toString(course.getGrade()));
+            gradeConversionTable.get(course.getGrade());
+            txtGrade.setText(gradeConversionTable.get(course.getGrade()));
             txtCredit.setText(Integer.toString(course.getCredits()));
         }
     }

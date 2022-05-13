@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/tvAssignmentNameShow"
-        android:layout_width="200dp"
+        android:layout_width="184dp"
         android:layout_height="50dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
@@ -22,7 +22,7 @@
 
     <TextView
         android:id="@+id/tvAssignmentWorthShown"
-        android:layout_width="110dp"
+        android:layout_width="103dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
         android:layout_toRightOf="@id/tvAssignmentNameShow"
@@ -35,7 +35,7 @@
 
     <TextView
         android:id="@+id/tvAssignmentGradeShown"
-        android:layout_width="100dp"
+        android:layout_width="103dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
         android:layout_marginRight="8dp"
@@ -86,9 +86,9 @@
         android:layout_alignRight="@+id/ivClassGradeBubble"
         android:layout_alignBottom="@+id/ivClassGradeBubble"
         android:gravity="center"
-        android:text="100%"
+        android:text="100.00%"
         android:textColor="@color/black"
-        android:textSize="45sp"
+        android:textSize="33dp"
         android:textStyle="bold" />
 
     <Button
