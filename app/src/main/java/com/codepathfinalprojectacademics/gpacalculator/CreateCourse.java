@@ -5,10 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class CreateCourse extends AppCompatActivity {
     private TextView courseNameText;
@@ -20,6 +26,11 @@ public class CreateCourse extends AppCompatActivity {
     private EditText inputGrade;
 
     private Button submitButton;
+
+    private Spinner letterGradeSpinner;
+    public String letterGradeSelected;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +44,31 @@ public class CreateCourse extends AppCompatActivity {
         inputCredits = findViewById(R.id.creditsInput);
         inputGrade = findViewById(R.id.gradeInputCourse);
 
+        letterGradeSpinner = findViewById(R.id.spinnerGradeLetter);
+
         submitButton = findViewById(R.id.submitCourseBtn);
+
+    // Spinner Stuff
+        ArrayAdapter<String> gradeAdapter = new ArrayAdapter<String>(CreateCourse.this,
+                android.R.layout.simple_list_item_1,
+                getResources().getStringArray(R.array.courseGradesLetters));
+
+        gradeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        letterGradeSpinner.setAdapter(gradeAdapter);
+
+    // Saves the selection of the spinner
+        letterGradeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                letterGradeSelected = parent.getItemAtPosition(position).toString();
+                Toast.makeText(CreateCourse.this, letterGradeSelected, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override

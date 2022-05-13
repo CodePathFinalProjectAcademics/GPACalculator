@@ -12,6 +12,7 @@ public class Course extends ParseObject {
     public static final String KEY_CREDITS = "credits";
     public static final String KEY_WEIGHT = "weight";
     public static final String KEY_USER = "user";
+    public static final String KEY_LETTER_GRADE = "letterGrade";
 
     public String getName() {
         return getString(KEY_NAME);

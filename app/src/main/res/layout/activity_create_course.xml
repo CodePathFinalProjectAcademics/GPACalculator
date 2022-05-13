@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,101 +8,96 @@
 
     <TextView
         android:id="@+id/createCourseName"
-        android:textAlignment="center"
         android:layout_width="157dp"
         android:layout_height="36dp"
-        android:layout_marginTop="36dp"
         android:text="@string/course_name"
+        android:layout_marginTop="15dp"
+        android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:id="@+id/courseNameInput"
         android:layout_width="206dp"
         android:layout_height="48dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
+        android:autofillHints=""
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createCourseName"
-        android:autofillHints="" />
+        android:layout_below="@id/createCourseName"
+        android:layout_centerHorizontal="true"
+        android:text="@string/name" />
 
     <TextView
         android:id="@+id/createCreditText"
-        android:textAlignment="center"
         android:layout_width="189dp"
         android:layout_height="38dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="15dp"
         android:text="@string/credits"
+        android:layout_below="@id/courseNameInput"
+        android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/courseNameInput" />
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/creditsInput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/createCreditText"
         android:ems="10"
         android:importantForAutofill="no"
         android:inputType="numberSigned"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createCreditText"
+        android:layout_centerHorizontal="true"
         tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/createGradeTextCourse"
-        android:textAlignment="center"
         android:layout_width="210dp"
         android:layout_height="42dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="15dp"
         android:text="@string/grade"
+        android:layout_below="@id/creditsInput"
+        android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/creditsInput" />
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/gradeInputCourse"
         android:layout_width="wrap_content"
+        android:layout_marginTop="15dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_below="@id/createGradeTextCourse"
         android:ems="10"
         android:importantForAutofill="no"
         android:inputType="numberDecimal"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createGradeTextCourse"
+        android:layout_centerHorizontal="true"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <Spinner
+        android:id="@+id/spinnerGradeLetter"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/gradeInputCourse"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"/>
 
     <Button
         android:id="@+id/submitCourseBtn"
         android:layout_width="190dp"
         android:layout_height="50dp"
-        android:layout_marginTop="60dp"
-        android:text="@string/submit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gradeInputCourse" />
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/spinnerGradeLetter"
+        android:text="@string/submit" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>

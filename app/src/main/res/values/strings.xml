@@ -31,4 +31,19 @@
     <string name="course_name">Course Name</string>
     <string name="credits">Credits</string>
     <string name="delete_all">delete all</string>
+    <string-array name="courseGradesLetters">
+        <item>A+</item>
+        <item>A</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B</item>
+        <item>B-</item>
+        <item>C+</item>
+        <item>C</item>
+        <item>C-</item>
+        <item>D+</item>
+        <item>D</item>
+        <item>D-</item>
+        <item>F</item>
+    </string-array>
 </resources>

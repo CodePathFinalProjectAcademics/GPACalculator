@@ -165,7 +165,6 @@ public class Home extends Fragment {
         course.setCredits(credits);
         course.setGrade(grade);
         course.setWeight("");
-
         classArrayList.add(course);
         adapter.notifyDataSetChanged();
         gpaHomeResultShow.setText(String.format("%.2f", calculateGPA(classArrayList)));
