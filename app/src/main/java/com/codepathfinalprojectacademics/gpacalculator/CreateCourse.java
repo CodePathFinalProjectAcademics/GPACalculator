@@ -23,13 +23,23 @@ public class CreateCourse extends AppCompatActivity {
 
     private EditText inputCourseName;
     private EditText inputCredits;
-    private EditText inputGrade;
 
     private Button submitButton;
 
     private Spinner letterGradeSpinner;
     public String letterGradeSelected;
 
+    /**
+     * Convert the letter grades to quality point earned
+     */
+
+    private static final Map<String, Float>gradeConversionTable = new HashMap<String, Float>() {{
+        put("A+", 4.0f); put("A", 4.0f); put("A-", 3.7f);
+        put("B+", 3.3f); put("B", 3.0f); put("B-", 2.7f);
+        put("C+", 2.3f); put("C", 2.0f); put("C-", 1.7f);
+        put("D+", 1.3f); put("D", 1.0f); put("D-", 0.7f);
+        put("F", 0.0f);
+    }};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +52,6 @@ public class CreateCourse extends AppCompatActivity {
 
         inputCourseName = findViewById(R.id.courseNameInput);
         inputCredits = findViewById(R.id.creditsInput);
-        inputGrade = findViewById(R.id.gradeInputCourse);
 
         letterGradeSpinner = findViewById(R.id.spinnerGradeLetter);
 
@@ -75,7 +84,7 @@ public class CreateCourse extends AppCompatActivity {
             public void onClick(View v) {
                 String courseName = inputCourseName.getText().toString();
                 String credits = inputCredits.getText().toString();
-                String grade = inputGrade.getText().toString();
+                String grade = gradeConversionTable.get(letterGradeSelected).toString();
 
                 try {
                     Integer.parseInt(credits);

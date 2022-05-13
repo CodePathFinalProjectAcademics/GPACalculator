@@ -42,17 +42,6 @@ public class Home extends Fragment {
     private Button deleteAllButton;
     private TextView gpaHomeResultShow;
 
-    /**
-     * Convert the letter grades to credit earned
-     */
-    private static final Map<String, Float>gradeConversionTable = new HashMap<String, Float>() {{
-        put("A+", 4.0f); put("A", 4.0f); put("A-", 3.7f);
-        put("B+", 3.3f); put("B", 3.0f); put("B-", 2.7f);
-        put("C+", 2.3f); put("C", 2.0f); put("C-", 1.7f);
-        put("D+", 1.3f); put("D", 1.0f); put("D-", 0.7f);
-        put("F", 0.0f);
-    }};
-
     public Home() {
         // Required empty public constructor
     }
