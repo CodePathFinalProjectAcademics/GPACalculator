@@ -63,6 +63,11 @@ public class Home extends Fragment {
         createCourseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(ParseUser.getCurrentUser() == null) {
+                    Toast.makeText(getContext(), "You must sign in to use this feature", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 Intent intent = new Intent(getActivity(), CreateCourse.class);
                 startActivityForResult(intent, 2);
             }

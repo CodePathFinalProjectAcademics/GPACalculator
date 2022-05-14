@@ -102,6 +102,11 @@ public class Classgpa extends Fragment {
     }
 
     public void goToAssignmentActivity() {
+        if(ParseUser.getCurrentUser() == null) {
+            Toast.makeText(getContext(), "You must sign in to use this feature", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         Intent intent = new Intent(getActivity(), CreateAssignment.class);
         startActivityForResult(intent, 1);
     }

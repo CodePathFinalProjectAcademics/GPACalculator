@@ -26,11 +26,11 @@
             android:id="@+id/userName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/username"
-            android:textSize="20sp"
-            android:layout_toEndOf="@+id/profile"
             android:layout_centerVertical="true"
-            android:layout_marginStart="10dp"/>
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/profile"
+            android:text="@string/username"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/logoutBtn"
@@ -38,7 +38,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:text="@string/profile_log_out">
-
         </Button>
     </RelativeLayout>
 
@@ -70,7 +69,6 @@
                     android:id="@+id/user_gpa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/user_gpa"
                     android:textSize="20sp"
                     android:layout_centerInParent="true">
                 </TextView>
