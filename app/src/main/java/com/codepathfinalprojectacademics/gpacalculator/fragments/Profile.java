@@ -68,28 +68,6 @@ public class Profile extends Fragment {
         }));
 
         queryCourse();
-        querySection();
-    }
-
-    private void querySection() {
-        ParseQuery<Section> q = ParseQuery.getQuery(Section.class);
-        q.include("user");
-        q.whereEqualTo("user", ParseUser.getCurrentUser());
-
-        q.findInBackground(new FindCallback<Section>() {
-            @Override
-            public void done(List<Section> objects, ParseException e) {
-                if(e != null) {
-                    System.out.println("Error with querying");
-                    return;
-                }
-
-                float average = calculateGrade((ArrayList<Section>) objects);
-                userGPA.setText(String.format("%.2f", average));
-
-                System.out.println(calculateGrade((ArrayList<Section>) objects));
-            }
-        });
     }
 
     private void queryCourse() {
@@ -112,22 +90,6 @@ public class Profile extends Fragment {
                 userGPA.setText(String.format("%.2f", gpa));
             }
         });
-    }
-
-    /**
-     * Calculate the grade for a class
-     * @param sections list of all the grade distributions
-     * @return the current grade for that class
-     */
-    private static float calculateGrade(ArrayList<Section> sections) {
-        float currentGrade = 0f;
-
-        for(int i = 0; i < sections.size(); i++) {
-            Section section = sections.get(i);
-            currentGrade += (section.getPercentage() / 100) * section.getGrade();
-        }
-
-        return currentGrade;
     }
 
     /**
