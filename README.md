@@ -24,9 +24,9 @@ A calculator that can calculate a user's GPA based on the amount of credits, pas
 
 **Required Must-have Stories**
 
-* User can calculate their overall GPA for college & high school.
+* [X] User can calculate their overall GPA for college & high school.
 * [X] Bottom View Navigation that can switch between the two options above
-* When user exits out of app and reopens it, previously submitted info will still be there
+* [X] When user exits out of app and reopens it, previously submitted info will still be there
 * [X] User can create an account
 * [X] User can login into their account from the login screen
 * [X] A guest option that allow the user to bypass the login system
